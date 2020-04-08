@@ -90,8 +90,8 @@ def name(request):
             a = np.array([a]).tolist()
 
             
-            load = pickle.load(open('model1.sav', 'rb'))
-            result = load.predict(a)
+            loadresult = pickle.load(open('model1.sav', 'rb'))
+            result = loadresult.predict(a)
             predictedValue = pd.DataFrame(result)
             predictedValue = predictedValue.to_numpy()
             finalPrice  = str(predictedValue).lstrip('[').rstrip(']')
