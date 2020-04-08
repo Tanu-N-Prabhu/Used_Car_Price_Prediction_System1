@@ -31,8 +31,21 @@ import time
 
 
 
+# Storing the dataset (CSV file) as a pandas dataframe
 
+df = pd.read_csv('ucpps_app/Dataset/data.csv')   # Storing the CSV file into a dataframe
 
+selectedFeatures = ['yearOfRegistration','powerPS','model','kilometer','monthOfRegistration','fuelType','brand','postalCode','vehicleType_0','vehicleType_1','vehicleType_2','vehicleType_3','vehicleType_4','vehicleType_5','vehicleType_6','vehicleType_7','gearbox_0','gearbox_1']
+
+X = df[selectedFeatures]
+y = df['price']
+sc = StandardScaler()
+X_train = sc.fit_transform(X_train)
+X_test = sc.transform(X_test)
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+
+X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.25, random_state=1) # 0.25 x 0.8 = 0.2
 
 def name(request):    
     if request.method == "POST":
@@ -87,10 +100,14 @@ def name(request):
 
             print(a)
             a = np.array([a]).tolist()
-
             
-            loaded_model = pickle.load(open('model1.sav', 'rb'))
-            result = loaded_model.predict(a)
+
+
+            # Fit the model
+            rfr = RandomForestRegressor(max_depth = 16, max_features = 10, min_samples_leaf = 2, n_estimators = 350).fit(X_train, y_train)
+            
+            
+            result = rfr.predict(a)
             predictedValue = pd.DataFrame(result)
             predictedValue = predictedValue.to_numpy()
             finalPrice  = str(predictedValue).lstrip('[').rstrip(']')
