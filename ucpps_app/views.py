@@ -10,7 +10,6 @@ from datetime import date
 # Numpy library is used to operating storing the dataframe in a array
 import numpy as np
 # Importing Pickle library which is used to save and load the model
-import pickle
 import pandas as pd
 import time
 
@@ -90,8 +89,8 @@ def name(request):
             a = np.array([a]).tolist()
 
             
-            loadresult = pickle.load(open('model1.sav', 'rb'))
-            result = loadresult.predict(a)
+            loaded_model = pickle.load(open("model1.sav", 'rb'))
+            result = loaded_model.predict(a)
             predictedValue = pd.DataFrame(result)
             predictedValue = predictedValue.to_numpy()
             finalPrice  = str(predictedValue).lstrip('[').rstrip(']')
