@@ -33,7 +33,7 @@ import time
 
 # Storing the dataset (CSV file) as a pandas dataframe
 
-df = pd.read_csv('ucpps_app/Dataset/data.csv')   # Storing the CSV file into a dataframe
+df = pd.read_csv('ucpps_app/Dataset/CleanedData.csv')   # Storing the CSV file into a dataframe
 
 selectedFeatures = ['yearOfRegistration','powerPS','model','kilometer','monthOfRegistration','fuelType','brand','postalCode','vehicleType_0','vehicleType_1','vehicleType_2','vehicleType_3','vehicleType_4','vehicleType_5','vehicleType_6','vehicleType_7','gearbox_0','gearbox_1']
 
@@ -105,7 +105,8 @@ def name(request):
 
 
             # Fit the model
-            rfr = RandomForestRegressor(max_depth = 16, max_features = 10, min_samples_leaf = 2, n_estimators = 350).fit(X_train, y_train)
+            rfr = RandomForestRegressor(max_depth = 16, max_features = 10, min_samples_leaf = 2, n_estimators = 20).fit(X_train, y_train)
+
             
             
             result = rfr.predict(a)
