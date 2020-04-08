@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Home</title>
+</head>
+<style>
+    html,body,h1,h2,h3,h4,h5,h6,p {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+p{
+    font-size: 20px;
+
+}
+body{
+    background-color: #DDDDDD;
+}
+</style>
+<body>
+    <div class="w3-container" align="center">
+        <h2 align = "center">Used Car Price Prediction System</h2>
+        <p align = "center">How much is your car worth?, Enter the specifications of the car and get the price</p>
+        <div class="w3-card-4">
+          <header class="w3-container w3-blue">
+            <h1>UCPPS</h1>
+          </header>
+          <form class="example" method="POST">
+            {% csrf_token %}
+            <table>
+            <tr>
+            <td><p>Name of the car </p></td>
+            <td></td>
+            <td>
+            <td>{{form.carName}}</td>
+            
+            <tr>
+
+            <tr>
+             <td>   <p>Brand of the car </p></td>
+             <td></td>
+             <td></td>
+             <td>{{form.carBrand}}</td>
+            </tr>
+
+            
+            <tr>
+                <td>   <p>Model of the car </p></td>
+                <td></td>
+                <td></td>
+                <td>{{form.carModel}}</td>
+            </tr>
+
+
+            <tr>
+                <td>   <p>Total Kilometers </p></td>
+                <td></td>
+                <td></td>
+                <td>{{form.carKilometer}}</td>
+            </tr>
+
+            <tr>
+                <td>   <p>Type of the car  </p></td>
+                <td></td>
+                <td></td>
+                <td>{{form.carVehicleType}}</td>
+            </tr>
+
+
+            <tr>
+                <td>   <p>Gearbox of the car </p></td>
+                <td></td>
+                <td></td>
+                <td>{{form.carGearBox}}</td>
+            </tr>
+
+            <tr>
+                <td><p>Power of the car (PS) </p></td>
+                <td></td>
+                <td></td>
+                <td>{{form.carPower}}</td>
+            </tr>
+
+            <tr>
+                <td> <p>Fueltype of the car </p></td>
+                <td></td>
+                <td></td>
+                <td>{{form.carFuelType}}</td>
+            </tr>
+
+
+            
+            <tr>
+                <td> <p>Year of Registration </p></td>
+                <td></td>
+                <td></td>
+                <td>{{form.carYearOfRegistration}}</td>
+            </tr>
+
+            
+            <tr>
+                <td> <p>Month of Registration </p></td>
+                <td></td>
+                <td></td>
+                <td>{{form.carMonth}}</td>
+            </tr>
+
+            <tr>
+                <td> <p>Postal Code</p></td> 
+                <td></td>
+                <td></td>
+                <td>{{form.carPostalCode}}</td>
+            </tr>
+
+
+            
+            </table>
+            <br>
+           <button type="submit">Submit</button>
+
+           <br>
+           <br>
+           
+           {% for message in messages %}
+           {{ message }}
+           {% endfor %}
+        </form>
+        
+    </body>
+    <br>
+          <footer class="w3-container w3-blue">
+            <h5>Used Car Price Prediction System</h5> {{date}}
+            <h5><a href = "https://form.jotform.com/200964583358262">Not satisfied with the results? Click here to give your feedback</a></h5>
+          </footer>
+        </div>
+      </div>
+   
+</html>

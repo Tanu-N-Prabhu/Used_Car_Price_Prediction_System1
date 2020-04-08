@@ -1,0 +1,25 @@
+<!-- 
+	The author of this code is @Tanu Nanda Prabhu.
+	The name of the file is messages.html which contains all the html code.
+	The original message framework code was found fron the website Djangoproject.com
+  	Source: https://docs.djangoproject.com/en/3.0/ref/contrib/messages/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Invoking the javascript file (messageScreenTime.js) for retaining the message on the screen located in /static/js/messageScreenTime.js -->
+	<script src="/static/js/messageScreenTime.js"></script>
+    <title>Messages</title>
+</head>
+<body>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {{ message.tags }} m-2" id="msg" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %} 
+</body>
+</html>
