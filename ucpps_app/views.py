@@ -89,7 +89,7 @@ def name(request):
             a = np.array([a]).tolist()
 
             
-            loaded_model = pickle.load(open("Used_Car_Price_Prediction_System1/model1.sav", 'rb'))
+            loaded_model = pickle.load(open('model1.sav', 'rb'))
             result = loaded_model.predict(a)
             predictedValue = pd.DataFrame(result)
             predictedValue = predictedValue.to_numpy()
